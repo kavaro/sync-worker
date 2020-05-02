@@ -1,11 +1,11 @@
 {
   "name": "sync-worker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "synchronize local database with server database using a worker",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/kavaro/sync-worker.git",
+  "repository": "https://github.com/kavaro/sync-worker",
   "license": "MIT",
   "keywords": [],
   "scripts": {
