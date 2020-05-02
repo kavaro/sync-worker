@@ -1,0 +1,727 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>sync-worker</title>
+	<meta name="description" content="Documentation for sync-worker">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">sync-worker</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>sync-worker</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/clientmemorydb.html" class="tsd-kind-icon">Client<wbr>Memory<wbr>Db</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/memorydbbase.html" class="tsd-kind-icon">Memory<wbr>DbBase</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/optimisticchangeids.html" class="tsd-kind-icon">Optimistic<wbr>Change<wbr>Ids</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/servermemorydb.html" class="tsd-kind-icon">Server<wbr>Memory<wbr>Db</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/syncclient.html" class="tsd-kind-icon">Sync<wbr>Client</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/syncworker.html" class="tsd-kind-icon">Sync<wbr>Worker</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/workermemorydb.html" class="tsd-kind-icon">Worker<wbr>Memory<wbr>Db</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tclientdb.html" class="tsd-kind-icon">TClient<wbr>Db</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tcollectiondoc.html" class="tsd-kind-icon">TCollection<wbr>Doc</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tdbbase.html" class="tsd-kind-icon">TDb<wbr>Base</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tdelete.html" class="tsd-kind-icon">TDelete</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/tobj.html" class="tsd-kind-icon">TObj</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/toptimisticdelete.html" class="tsd-kind-icon">TOptimistic<wbr>Delete</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/toptimisticupsert.html" class="tsd-kind-icon">TOptimistic<wbr>Upsert</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tserverdb.html" class="tsd-kind-icon">TServer<wbr>Db</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tset.html" class="tsd-kind-icon">TSet</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tupsert.html" class="tsd-kind-icon">TUpsert</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tworkerdb.html" class="tsd-kind-icon">TWorker<wbr>Db</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tworkerdelete.html" class="tsd-kind-icon">TWorker<wbr>Delete</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/tworkerset.html" class="tsd-kind-icon">TWorker<wbr>Set</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#delete" class="tsd-kind-icon">DELETE</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#set" class="tsd-kind-icon">SET</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#tapplypatches" class="tsd-kind-icon">TApply<wbr>Patches</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#tdbchange" class="tsd-kind-icon">TDb<wbr>Change</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#tdbchangetype" class="tsd-kind-icon">TDb<wbr>Change<wbr>Type</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#tidfactory" class="tsd-kind-icon">TId<wbr>Factory</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#toptimisticchange" class="tsd-kind-icon">TOptimistic<wbr>Change</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#tserverchange" class="tsd-kind-icon">TServer<wbr>Change</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#tworkerchange" class="tsd-kind-icon">TWorker<wbr>Change</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#upsert" class="tsd-kind-icon">UPSERT</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#applychange" class="tsd-kind-icon">apply<wbr>Change</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#applydelete" class="tsd-kind-icon">apply<wbr>Delete</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#applyset" class="tsd-kind-icon">apply<wbr>Set</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createidfactory" class="tsd-kind-icon">create<wbr>IdFactory</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createmapid" class="tsd-kind-icon">create<wbr>Map<wbr>Id</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createsyncclient" class="tsd-kind-icon">create<wbr>Sync<wbr>Client</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createsyncworker" class="tsd-kind-icon">create<wbr>Sync<wbr>Worker</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>DELETE</h3>
+					<div class="tsd-signature tsd-kind-icon">DELETE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"delete"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L9">src/lib/types.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="set" class="tsd-anchor"></a>
+					<h3>SET</h3>
+					<div class="tsd-signature tsd-kind-icon">SET<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"set"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L8">src/lib/types.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="tapplypatches" class="tsd-anchor"></a>
+					<h3>TApply<wbr>Patches</h3>
+					<div class="tsd-signature tsd-kind-icon">TApply<wbr>Patches&lt;TDoc, TPatch&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span>, patches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TDoc</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L11">src/lib/types.ts:11</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TDoc</h4>
+						</li>
+						<li>
+							<h4>TPatch</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span>, patches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>doc: <span class="tsd-signature-type">TDoc</span></h5>
+											</li>
+											<li>
+												<h5>patches: <span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="tdbchange" class="tsd-anchor"></a>
+					<h3>TDb<wbr>Change</h3>
+					<div class="tsd-signature tsd-kind-icon">TDb<wbr>Change&lt;TCollection, TDoc, TPatch&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/tupsert.html" class="tsd-signature-type">TUpsert</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/tdelete.html" class="tsd-signature-type">TDelete</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L47">src/lib/types.ts:47</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TCollection</h4>
+						</li>
+						<li>
+							<h4>TDoc</h4>
+						</li>
+						<li>
+							<h4>TPatch</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="tdbchangetype" class="tsd-anchor"></a>
+					<h3>TDb<wbr>Change<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">TDb<wbr>Change<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="globals.html#set" class="tsd-signature-type">SET</a><span class="tsd-signature-symbol"> | </span><a href="globals.html#delete" class="tsd-signature-type">DELETE</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L63">src/lib/types.ts:63</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="tidfactory" class="tsd-anchor"></a>
+					<h3>TId<wbr>Factory</h3>
+					<div class="tsd-signature tsd-kind-icon">TId<wbr>Factory&lt;TId&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TId</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L5">src/lib/types.ts:5</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TId</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TId</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TId</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="toptimisticchange" class="tsd-anchor"></a>
+					<h3>TOptimistic<wbr>Change</h3>
+					<div class="tsd-signature tsd-kind-icon">TOptimistic<wbr>Change&lt;TCollection, TDoc, TChangeId, TPatch&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/toptimisticupsert.html" class="tsd-signature-type">TOptimisticUpsert</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TChangeId</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/toptimisticdelete.html" class="tsd-signature-type">TOptimisticDelete</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TChangeId</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L51">src/lib/types.ts:51</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TCollection</h4>
+						</li>
+						<li>
+							<h4>TDoc</h4>
+						</li>
+						<li>
+							<h4>TChangeId</h4>
+						</li>
+						<li>
+							<h4>TPatch</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="tserverchange" class="tsd-anchor"></a>
+					<h3>TServer<wbr>Change</h3>
+					<div class="tsd-signature tsd-kind-icon">TServer<wbr>Change&lt;TCollection, TDoc&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/tset.html" class="tsd-signature-type">TSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/tdelete.html" class="tsd-signature-type">TDelete</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L59">src/lib/types.ts:59</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TCollection</h4>
+						</li>
+						<li>
+							<h4>TDoc</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="tworkerchange" class="tsd-anchor"></a>
+					<h3>TWorker<wbr>Change</h3>
+					<div class="tsd-signature tsd-kind-icon">TWorker<wbr>Change&lt;TCollection, TDoc, TChangeId&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/tworkerset.html" class="tsd-signature-type">TWorkerSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TChangeId</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/tworkerdelete.html" class="tsd-signature-type">TWorkerDelete</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TChangeId</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L55">src/lib/types.ts:55</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TCollection</h4>
+						</li>
+						<li>
+							<h4>TDoc</h4>
+						</li>
+						<li>
+							<h4>TChangeId</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="upsert" class="tsd-anchor"></a>
+					<h3>UPSERT</h3>
+					<div class="tsd-signature tsd-kind-icon">UPSERT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"upsert"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/types.ts#L7">src/lib/types.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="applychange" class="tsd-anchor"></a>
+					<h3>apply<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">apply<wbr>Change&lt;TCollection, TDoc, TId&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span>, type<span class="tsd-signature-symbol">: </span><a href="globals.html#tdbchangetype" class="tsd-signature-type">TDbChangeType</a>, collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCollection</span>, doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/util.ts#L33">src/lib/util.ts:33</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TCollection</h4>
+								</li>
+								<li>
+									<h4>TDoc</h4>
+								</li>
+								<li>
+									<h4>TId</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>db: <a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>type: <a href="globals.html#tdbchangetype" class="tsd-signature-type">TDbChangeType</a></h5>
+								</li>
+								<li>
+									<h5>collection: <span class="tsd-signature-type">TCollection</span></h5>
+								</li>
+								<li>
+									<h5>doc: <span class="tsd-signature-type">TDoc</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="applydelete" class="tsd-anchor"></a>
+					<h3>apply<wbr>Delete</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">apply<wbr>Delete&lt;TCollection, TDoc, TId&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span>, collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCollection</span>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/util.ts#L6">src/lib/util.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TCollection</h4>
+								</li>
+								<li>
+									<h4>TDoc</h4>
+								</li>
+								<li>
+									<h4>TId</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>db: <a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>collection: <span class="tsd-signature-type">TCollection</span></h5>
+								</li>
+								<li>
+									<h5>id: <span class="tsd-signature-type">TId</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="applyset" class="tsd-anchor"></a>
+					<h3>apply<wbr>Set</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">apply<wbr>Set&lt;TCollection, TDoc, TId&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span>, collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCollection</span>, doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/util.ts#L19">src/lib/util.ts:19</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TCollection</h4>
+								</li>
+								<li>
+									<h4>TDoc</h4>
+								</li>
+								<li>
+									<h4>TId</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>db: <a href="interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>collection: <span class="tsd-signature-type">TCollection</span></h5>
+								</li>
+								<li>
+									<h5>doc: <span class="tsd-signature-type">TDoc</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createidfactory" class="tsd-anchor"></a>
+					<h3>create<wbr>IdFactory</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>IdFactory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/OptimisticChangeIds.spec.ts#L5">src/lib/OptimisticChangeIds.spec.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>ids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-signature">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createmapid" class="tsd-anchor"></a>
+					<h3>create<wbr>Map<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Map<wbr>Id<span class="tsd-signature-symbol">(</span>collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, docId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/MemoryDb.ts#L10">src/lib/MemoryDb.ts:10</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>collection: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>docId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createsyncclient" class="tsd-anchor"></a>
+					<h3>create<wbr>Sync<wbr>Client</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Sync<wbr>Client<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/syncclient.html" class="tsd-signature-type">SyncClient</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="interfaces/tobj.html" class="tsd-signature-type">TObj</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Patch</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/SyncClient.spec.ts#L8">src/lib/SyncClient.spec.ts:8</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>ids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="classes/syncclient.html" class="tsd-signature-type">SyncClient</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="interfaces/tobj.html" class="tsd-signature-type">TObj</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Patch</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createsyncworker" class="tsd-anchor"></a>
+					<h3>create<wbr>Sync<wbr>Worker</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Sync<wbr>Worker<span class="tsd-signature-symbol">(</span>addListener<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/syncworker.html" class="tsd-signature-type">SyncWorker</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="interfaces/tobj.html" class="tsd-signature-type">TObj</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Patch</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/c139fe0/src/lib/SyncWorker.spec.ts#L10">src/lib/SyncWorker.spec.ts:10</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> addListener: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="classes/syncworker.html" class="tsd-signature-type">SyncWorker</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="interfaces/tobj.html" class="tsd-signature-type">TObj</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Patch</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals current ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/clientmemorydb.html" class="tsd-kind-icon">Client<wbr>Memory<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/memorydbbase.html" class="tsd-kind-icon">Memory<wbr>DbBase</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/optimisticchangeids.html" class="tsd-kind-icon">Optimistic<wbr>Change<wbr>Ids</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/servermemorydb.html" class="tsd-kind-icon">Server<wbr>Memory<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/syncclient.html" class="tsd-kind-icon">Sync<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/syncworker.html" class="tsd-kind-icon">Sync<wbr>Worker</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/workermemorydb.html" class="tsd-kind-icon">Worker<wbr>Memory<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tclientdb.html" class="tsd-kind-icon">TClient<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tcollectiondoc.html" class="tsd-kind-icon">TCollection<wbr>Doc</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tdbbase.html" class="tsd-kind-icon">TDb<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tdelete.html" class="tsd-kind-icon">TDelete</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tobj.html" class="tsd-kind-icon">TObj</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/toptimisticdelete.html" class="tsd-kind-icon">TOptimistic<wbr>Delete</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/toptimisticupsert.html" class="tsd-kind-icon">TOptimistic<wbr>Upsert</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tserverdb.html" class="tsd-kind-icon">TServer<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tset.html" class="tsd-kind-icon">TSet</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tupsert.html" class="tsd-kind-icon">TUpsert</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tworkerdb.html" class="tsd-kind-icon">TWorker<wbr>Db</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tworkerdelete.html" class="tsd-kind-icon">TWorker<wbr>Delete</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/tworkerset.html" class="tsd-kind-icon">TWorker<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#delete" class="tsd-kind-icon">DELETE</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#set" class="tsd-kind-icon">SET</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#tapplypatches" class="tsd-kind-icon">TApply<wbr>Patches</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#tdbchange" class="tsd-kind-icon">TDb<wbr>Change</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tdbchangetype" class="tsd-kind-icon">TDb<wbr>Change<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#tidfactory" class="tsd-kind-icon">TId<wbr>Factory</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#toptimisticchange" class="tsd-kind-icon">TOptimistic<wbr>Change</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#tserverchange" class="tsd-kind-icon">TServer<wbr>Change</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#tworkerchange" class="tsd-kind-icon">TWorker<wbr>Change</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#upsert" class="tsd-kind-icon">UPSERT</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#applychange" class="tsd-kind-icon">apply<wbr>Change</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#applydelete" class="tsd-kind-icon">apply<wbr>Delete</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#applyset" class="tsd-kind-icon">apply<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createidfactory" class="tsd-kind-icon">create<wbr>IdFactory</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createmapid" class="tsd-kind-icon">create<wbr>Map<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createsyncclient" class="tsd-kind-icon">create<wbr>Sync<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createsyncworker" class="tsd-kind-icon">create<wbr>Sync<wbr>Worker</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
