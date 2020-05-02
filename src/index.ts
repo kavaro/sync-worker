@@ -1,1 +1,6 @@
-export * from './lib/number';
+export { default as OptimisticChangeIds } from './lib/OptimisticChangeIds'
+export { default as SyncClient } from './lib/SyncClient'
+export { default as SyncWorker } from './lib/SyncWorker'
+export * from './lib/MemoryDb'
+export * from './lib/util'
+export * from './lib/types'
