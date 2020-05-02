@@ -7,7 +7,7 @@ import { TClientDb, TWorkerDb, TServerDb, TDbChange, TDbChangeType } from './typ
 
 enablePatches()
 
-function createMapId(collection, docId) {
+function createMapId(collection: string, docId: string): string {
   return `${collection}/${docId}`
 }
 
@@ -19,11 +19,11 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
   /**
    * True when database shall emit events
    */
-  emits: boolean
+  private emits: boolean
   /**
    * Maps collectionName/docId to doc
    */
-  docs: Map<string, TDoc>
+  private docs: Map<string, TDoc>
 
   /**
    * Create a simple in-memory synchronous database
@@ -40,7 +40,7 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    * @param collection Name of the collection
    * @param id Document id
    */
-  get(collection: string, id: string): TDoc {
+  public get(collection: string, id: string): TDoc {
     return this.docs.get(createMapId(collection, id))
   }
 
@@ -54,7 +54,7 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    * @param collection Name of the collection
    * @param doc Document to be set
    */
-  set(collection: string, doc: TDoc): TDoc {
+  public set(collection: string, doc: TDoc): TDoc {
     const oldDoc = this.get(collection, this.getId(doc as TDoc & { id: string }))
     const [producedDoc, patches] = produceWithPatches(oldDoc || {}, (draft: TDoc & { id: string }) => { 
       if (!('id' in draft)) {
@@ -76,7 +76,7 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    * @param collection Name of the collection
    * @param id Id of document to delete
    */
-  delete(collection: string, id: string): TDoc {
+  public delete(collection: string, id: string): TDoc {
     const oldDoc = this.get(collection, id)
     this.docs.delete(createMapId(collection, id))
     if (this.emits && oldDoc) {
@@ -89,7 +89,7 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    * Given a doc, return its id
    * @param doc Document with id field
    */
-  getId(doc: TDoc & { id: string }): string {
+  public getId(doc: TDoc & { id: string }): string {
     return doc.id
   }
 
@@ -98,7 +98,7 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    * @param docA 
    * @param docB 
    */
-  isEqual(docA: TDoc, docB: TDoc): boolean {
+  public isEqual(docA: TDoc, docB: TDoc): boolean {
     return stringify(docA) === stringify(docB)
   }
 }
@@ -124,7 +124,7 @@ export class WorkerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TWorkerD
    * Persists database changes
    * Returns promise that resolves when save was successfull and rejects otherwise
    */
-  async save(): Promise<void> {
+  public async save(): Promise<void> {
   }
 }
 
@@ -141,7 +141,7 @@ export class ServerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TServerD
    * Returns promise that resolves when save was successfull and rejects otherwise
    * @param changes 
    */
-  async save(changes: Array<TDbChange<string, TDoc, Patch>>) : Promise<void> {
+  public async save(changes: Array<TDbChange<string, TDoc, Patch>>) : Promise<void> {
     changes.forEach(change => applyChange(this, change.type as TDbChangeType, change.collection, change.doc))
   }
 }

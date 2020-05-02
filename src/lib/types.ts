@@ -1,4 +1,4 @@
-export type TObj = {
+export interface TObj {
   [key: string]: any
 }
 
@@ -8,7 +8,7 @@ export type UPSERT = 'upsert'
 export type SET = 'set'
 export type DELETE = 'delete'
 
-export type TApplyPatches<TDoc, TPatch> = (doc: TDoc, patches: Array<TPatch>) => TDoc
+export type TApplyPatches<TDoc, TPatch> = (doc: TDoc, patches: TPatch[]) => TDoc
 
 export interface TCollectionDoc<TCollection, TDoc> {
   collection: TCollection
@@ -29,7 +29,7 @@ export interface TWorkerDelete<TCollection, TDoc, TChangeId> extends TDelete<TCo
 
 export interface TUpsert<TCollection, TDoc, TPatch> extends TCollectionDoc<TCollection, TDoc> {
   type: UPSERT
-  patches: Array<TPatch>
+  patches: TPatch[]
 }
 
 export interface TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch> extends TUpsert<TCollection, TDoc, TPatch> {

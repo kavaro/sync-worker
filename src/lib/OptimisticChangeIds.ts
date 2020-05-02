@@ -4,8 +4,8 @@ import { TIdFactory } from './types'
  * Responsible to track the id's of optimistic changes
  */
 export default class OptimisticChangeIds<TDocId, TChangeId> {
-  idFactory: TIdFactory<TChangeId>
-  ids: Map<TDocId, TChangeId>
+  private idFactory: TIdFactory<TChangeId>
+  private ids: Map<TDocId, TChangeId>
 
   /**
    * 
@@ -21,7 +21,7 @@ export default class OptimisticChangeIds<TDocId, TChangeId> {
    * @param docId
    * @returns changeId
    */
-  add(docId: TDocId): TChangeId {
+  public add(docId: TDocId): TChangeId {
     const changeId = this.idFactory()
     this.ids.set(docId, changeId)
     return changeId
@@ -33,8 +33,8 @@ export default class OptimisticChangeIds<TDocId, TChangeId> {
    * @param changeId 
    * @returns true when change id has been removed or did not exist
    */
-  remove(docId: TDocId, changeId?: TChangeId): boolean {
-    const { ids } = this
+  public remove(docId: TDocId, changeId?: TChangeId): boolean {
+    const ids = this.ids
     if (!ids.has(docId)) {
       return true
     }

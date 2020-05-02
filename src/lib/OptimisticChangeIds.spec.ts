@@ -2,7 +2,7 @@ import test from 'ava'
 import OptimisticChangeIds from './OptimisticChangeIds'
 import { TIdFactory } from './types'
 
-function createIdFactory(...ids: Array<string>): () => string {
+function createIdFactory(...ids: string[]): () => string {
   return () => ids.shift()
 }
 
@@ -17,8 +17,11 @@ test('add should map docId to changeId', t => {
   const changeIds = new OptimisticChangeIds<string, string>(idFactory)
   const ca = changeIds.add('a')
   const cb = changeIds.add('b')
+  // @ts-ignore
   t.is(changeIds.ids.get('a'), ca)
+  // @ts-ignore
   t.is(changeIds.ids.get('b'), cb)
+  // @ts-ignore
   t.is(Array.from(changeIds.ids.keys()).length, 2)
 })
 

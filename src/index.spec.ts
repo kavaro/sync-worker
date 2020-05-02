@@ -1,59 +1,59 @@
 import test from 'ava'
-import { Patch, applyPatches } from 'immer'
+import { applyPatches, Patch } from 'immer'
 import { v4 as uuid } from 'uuid'
 import { 
+  ClientMemoryDb, 
+  ServerMemoryDb, 
   SyncClient, 
   SyncWorker, 
-  ClientMemoryDb, 
-  WorkerMemoryDb, 
-  ServerMemoryDb, 
-  TObj
+  TObj,
+  WorkerMemoryDb
 } from '.'
 
 class MockWorkerChannel {
-  name: string
-  enabled: boolean = true
-  Q: Array<any> = []
-  onchange: any = null
+  public name: string
+  public onchange: any = null
+  public Q: any[] = []
+  private enabled: boolean = true
 
-  constructor(name, onchange) {
+  constructor(name: string, onchange: any) {
     this.name = name
     this.onchange = onchange
   }
 
-  postMessage(msg: any) {
+  public postMessage(msg: any): void {
     this.Q.push(msg)
     if (this.isEnabled()) {
       this.next()
     }
   }
 
-  next(count: number = Number.MAX_SAFE_INTEGER) {
+  public next(count: number = Number.MAX_SAFE_INTEGER): void {
     while (count && this.Q.length) {
       this.onchange(this.Q.shift())
       count--
     }
   }
 
-  disable() {
+  public disable(): MockWorkerChannel {
     this.enabled = false
     return this
   }
 
-  enable() {
+  public enable(): MockWorkerChannel {
     this.enabled = true
     return this
   }
 
-  isEnabled() {
+  public isEnabled(): boolean {
     return this.enabled
   }
 
-  size() {
+  public size(): number {
     return this.Q.length
   }
 
-  isEmpty() {
+  public isEmpty(): boolean {
     return !this.Q.length
   }
 }
