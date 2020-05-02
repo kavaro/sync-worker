@@ -7,11 +7,12 @@ import { TObj } from './types'
 
 enablePatches()
 
-function createSyncWorker(): SyncWorker<string, TObj, string, string, Patch> {
+function createSyncWorker(addListener = true): SyncWorker<string, TObj, string, string, Patch> {
   return new SyncWorker(
     new WorkerMemoryDb(),
     new ServerMemoryDb(),
-    applyPatches
+    applyPatches,
+    addListener
   )
 }
 
@@ -425,4 +426,14 @@ test('save: buffers incoming changes and retains old changes when savingChanges 
     // @ts-ignore
     t.is(syncWorker.pendingServerChanges, null)  
   }
+})
+
+test('constructor should not add listener when addListener param is false', t => {
+  const syncWorker = createSyncWorker(false)
+  const spy = sinon.spy()
+  // @ts-ignore
+  syncWorker.changed = spy
+  // @ts-ignore
+  syncWorker.serverDb.set('c1', { id: 'id1' })
+  t.assert(spy.notCalled)
 })
