@@ -83,7 +83,7 @@ export interface TDbBase<TCollection, TDoc, TId> {
    * @param id Document id
    * @returns Deleted document
    */
-  delete(collection: TCollection, id: TId): TDoc
+  delete(collection: TCollection, id: TId): void
   /**
    * Give document return its id
    * @param doc 
@@ -110,12 +110,15 @@ export interface TWorkerDb<TCollection, TDoc, TId> extends TDbBase<TCollection, 
 }
 
 /**
- * Worker database interface
+ * Client database interface
  */
 export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
   addListener(event: string, fn: any): void
 }
 
+/**
+ * Server database interface
+ */
 export interface TServerDb<TCollection, TDoc, TPatch> {
   addListener(event: string, fn: any): void
   save(changes: Array<TDbChange<TCollection, TDoc, TPatch>>) : Promise<void>

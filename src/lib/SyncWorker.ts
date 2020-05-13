@@ -154,8 +154,9 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
       if (clientChange) {
         if (clientChange.type !== 'delete') {
           if (type === 'delete') {
-            const deletedDoc = applyDelete(workerDb, collection, docId)
+            const deletedDoc = workerDb.get(collection, docId)
             if (deletedDoc) {
+              applyDelete(workerDb, collection, docId)
               workerChangesById.set(docId, { id: clientChange.id, type, collection, doc: deletedDoc })
             }
           } else {

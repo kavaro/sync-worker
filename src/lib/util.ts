@@ -7,27 +7,27 @@ export function applyDelete<TCollection, TDoc, TId>(
   db: TDbBase<TCollection, TDoc, TId>,
   collection: TCollection,
   id: TId
-): TDoc | null {
+): boolean {
   const oldDoc = db.get(collection, id)
   if (oldDoc) {
     db.delete(collection, id)
-    return oldDoc
+    return true
   }
-  return null
+  return false
 }
 
 export function applySet<TCollection, TDoc, TId>(
   db: TDbBase<TCollection, TDoc, TId>,
   collection: TCollection,
   doc: TDoc
-): TDoc | null {
+): boolean {
   const id: TId = db.getId(doc)
   const oldDoc = db.get(collection, id)
   if (!oldDoc || !db.isEqual(doc, oldDoc)) {
     db.set(collection, doc)
-    return doc
+    return true
   }
-  return null
+  return false
 }
 
 export function applyChange<TCollection, TDoc, TId>(
@@ -35,7 +35,7 @@ export function applyChange<TCollection, TDoc, TId>(
   type: TDbChangeType,
   collection: TCollection,
   doc: TDoc
-): TDoc | null {
+): boolean {
   if (type === 'delete') {
     return applyDelete(db, collection, db.getId(doc))
   }
