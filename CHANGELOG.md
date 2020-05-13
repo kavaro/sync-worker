@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/kavaro/sync-worker/compare/v0.1.0...v0.2.0) (2020-05-13)
+
+
+### Bug Fixes
+
+* improvde code coverage ([8e12217](https://github.com/kavaro/sync-worker/commit/8e12217))
+
+
+### improvement
+
+* change return types of TDbBase.delete and TDbBase.set to void ([83c71fd](https://github.com/kavaro/sync-worker/commit/83c71fd))
+
+
+### BREAKING CHANGES
+
+* Returnn types of TDbBase set and delete have been modified to be void
+
+
+
 ## 0.1.0 (2020-05-02)
 
 
