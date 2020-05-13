@@ -1,5 +1,5 @@
 import test from 'ava'
-import OptimisticChangeIds from './OptimisticChangeIds'
+import { OptimisticChangeIds } from '..'
 import { TIdFactory } from './types'
 
 function createIdFactory(...ids: string[]): () => string {
