@@ -109,18 +109,20 @@ export interface TWorkerDb<TCollection, TDoc, TId> extends TDbBase<TCollection, 
   save(): Promise<void>
 }
 
+export type Listener = (...args: any[]) => void
+
 /**
  * Client database interface
  */
 export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
-  addListener(event: string, fn: any): void
+  addListener(event: string, fn: Listener): void
 }
 
 /**
  * Server database interface
  */
 export interface TServerDb<TCollection, TDoc, TPatch> {
-  addListener(event: string, fn: any): void
+  addListener(event: string, fn: Listener): void
   save(changes: Array<TDbChange<TCollection, TDoc, TPatch>>) : Promise<void>
 }
 
