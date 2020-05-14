@@ -120,7 +120,7 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
         } else {
           const { type, patches } = change as TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch>
           const workerDoc = workerDb.get(change.collection, workerDb.getId(change.doc)) as TDoc
-          return { type, collection, doc: workerDoc, patches }
+          return { type, collection, doc: workerDb.clean(workerDoc), patches }
         }
       })
       await this.serverDb.save(serverChanges)

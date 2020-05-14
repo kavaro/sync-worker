@@ -85,6 +85,10 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
     return oldDoc
   }
 
+  public clean(doc: any): TDoc {
+    return doc
+  }
+
   /**
    * Given a doc, return its id
    * @param doc Document with id field

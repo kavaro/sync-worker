@@ -85,6 +85,11 @@ export interface TDbBase<TCollection, TDoc, TId> {
    */
   delete(collection: TCollection, id: TId): void
   /**
+   * Remove all database artifacts from doc
+   * @param doc 
+   */
+  clean(doc: any): TDoc
+  /**
    * Give document return its id
    * @param doc 
    * @returns document id
@@ -125,4 +130,3 @@ export interface TServerDb<TCollection, TDoc, TPatch> {
   addListener(event: string, fn: Listener): void
   save(changes: Array<TDbChange<TCollection, TDoc, TPatch>>) : Promise<void>
 }
-
