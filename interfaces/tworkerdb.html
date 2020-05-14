@@ -113,10 +113,11 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#clean" class="tsd-kind-icon">clean</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="tworkerdb.html#clean" class="tsd-kind-icon">clean</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#getid" class="tsd-kind-icon">get<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="tworkerdb.html#ids" class="tsd-kind-icon">ids</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#isequal" class="tsd-kind-icon">is<wbr>Equal</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="tworkerdb.html#save" class="tsd-kind-icon">save</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="tworkerdb.html#set" class="tsd-kind-icon">set</a></li>
@@ -127,18 +128,17 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="clean" class="tsd-anchor"></a>
 					<h3>clean</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">clean<span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#clean">clean</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L91">src/lib/types.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L110">src/lib/types.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -169,7 +169,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#delete">delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L86">src/lib/types.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L86">src/lib/types.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -208,7 +208,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L71">src/lib/types.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L71">src/lib/types.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +246,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#getid">getId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L97">src/lib/types.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L92">src/lib/types.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,6 +265,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="ids" class="tsd-anchor"></a>
+					<h3>ids</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">ids<span class="tsd-signature-symbol">(</span>collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L115">src/lib/types.ts:115</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get all list of all ids in collection</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>collection: <span class="tsd-signature-type">TCollection</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TId</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>array with all ids in the collection</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="isequal" class="tsd-anchor"></a>
 					<h3>is<wbr>Equal</h3>
@@ -276,7 +305,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#isequal">isEqual</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L104">src/lib/types.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L99">src/lib/types.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,7 +337,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L114">src/lib/types.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L119">src/lib/types.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -331,7 +360,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="tdbbase.html">TDbBase</a>.<a href="tdbbase.html#set">set</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/types.ts#L79">src/lib/types.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L79">src/lib/types.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -428,7 +457,7 @@
 					<li class="current tsd-kind-interface tsd-has-type-parameter">
 						<a href="tworkerdb.html" class="tsd-kind-icon">TWorker<wbr>Db</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="tworkerdb.html#clean" class="tsd-kind-icon">clean</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -439,6 +468,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="tworkerdb.html#getid" class="tsd-kind-icon">get<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="tworkerdb.html#ids" class="tsd-kind-icon">ids</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="tworkerdb.html#isequal" class="tsd-kind-icon">is<wbr>Equal</a>
