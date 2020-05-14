@@ -85,11 +85,6 @@ export interface TDbBase<TCollection, TDoc, TId> {
    */
   delete(collection: TCollection, id: TId): void
   /**
-   * Remove all database artifacts from doc
-   * @param doc 
-   */
-  clean(doc: any): TDoc
-  /**
    * Give document return its id
    * @param doc 
    * @returns document id
@@ -109,6 +104,16 @@ export interface TDbBase<TCollection, TDoc, TId> {
  */
 export interface TWorkerDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
   /**
+   * Remove all database artifacts from doc
+   * @param doc 
+   */
+  clean(doc: any): TDoc
+  /**
+   * Get all list of all ids in collection
+   * @returns array with all ids in the collection
+   */
+  ids(collection: TCollection): TId[] 
+  /**
    * Persist database and return a promise that resolves on success and rejects on failure
    */
   save(): Promise<void>
@@ -120,6 +125,16 @@ export type Listener = (...args: any[]) => void
  * Client database interface
  */
 export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
+  /**
+   * Remove all database artifacts from doc
+   * @param doc 
+   */
+  clean(doc: any): TDoc
+  /**
+   * Add event listener
+   * @param event
+   * @param fn 
+   */
   addListener(event: string, fn: Listener): void
 }
 
@@ -127,6 +142,15 @@ export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, 
  * Server database interface
  */
 export interface TServerDb<TCollection, TDoc, TPatch> {
+  /**
+   * Add event listener
+   * @param event
+   * @param fn 
+   */
   addListener(event: string, fn: Listener): void
+  /**
+   * Save changes to server database
+   * @param changes 
+   */
   save(changes: Array<TDbChange<TCollection, TDoc, TPatch>>) : Promise<void>
 }

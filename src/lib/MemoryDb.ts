@@ -35,6 +35,13 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
     this.docs = new Map()
   }
 
+  public ids(collection: string): string[] {
+    return Array.from(this.docs.keys())
+      .map(id => id.split('/'))
+      .filter(arr => arr[0] === collection)
+      .map(arr => arr[1])
+  }
+
   /**
    * Given a collection name and id return a document, if document does not exist return undefined
    * @param collection Name of the collection

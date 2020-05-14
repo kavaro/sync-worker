@@ -120,3 +120,18 @@ test('server.save: should return promise', t => {
   t.assert(typeof promise.catch === 'function')
   t.assert(typeof promise.finally === 'function')
 })
+
+test('clean: should return clean doc and default to noop', t => {
+  const clientDb = new ClientMemoryDb()
+  t.deepEqual(clientDb.clean({ id: 'id1' }), { id: 'id1' })
+  const workerDb = new WorkerMemoryDb()
+  t.deepEqual(workerDb.clean({ id: 'id1' }), { id: 'id1' })
+})
+
+test('ids: should return all ids in collection', t => {
+  const workerDb = new WorkerMemoryDb()
+  workerDb.set('c1', { id: 'id1' })
+  workerDb.set('c1', { id: 'id2' })
+  workerDb.set('c2', { id: 'id3' })
+  t.deepEqual(workerDb.ids('c1'), ['id1', 'id2'])
+})

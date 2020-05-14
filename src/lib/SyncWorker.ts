@@ -7,6 +7,7 @@ import {
   TServerChange,
   TServerDb,
   TWorkerChange,
+  TDelete,
   TWorkerDb
 } from './types'
 import { applyChange, applyDelete, applySet } from './util'
@@ -51,6 +52,7 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
     this.pendingServerChanges = null
     if (addListener) {
       serverDb.addListener('changed', changes => this.changed(changes))
+      serverDb.addListener('compact', (collection, ids) => this.compact(collection, ids))
     }
   }
 
@@ -152,19 +154,11 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
       const docId = workerDb.getId(serverDoc)
       const clientChange = this.clientChanges.get(docId)
       if (clientChange) {
-        if (clientChange.type !== 'delete') {
-          if (type === 'delete') {
-            const deletedDoc = workerDb.get(collection, docId)
-            if (deletedDoc) {
-              applyDelete(workerDb, collection, docId)
-              workerChangesById.set(docId, { id: clientChange.id, type, collection, doc: deletedDoc })
-            }
-          } else {
-            const newDoc = this.applyPatches(serverDoc, clientChange.patches)
-            applySet(workerDb, collection, newDoc)
-            if (!workerDb.isEqual(newDoc, clientChange.doc)) {
-              workerChangesById.set(docId, { id: clientChange.id, type, collection, doc: newDoc })
-            }
+        if (clientChange.type !== 'delete' && type !== 'delete') {
+          const newDoc = this.applyPatches(serverDoc, clientChange.patches)
+          applySet(workerDb, collection, newDoc)
+          if (!workerDb.isEqual(newDoc, clientChange.doc)) {
+            workerChangesById.set(docId, { id: clientChange.id, type, collection, doc: newDoc })
           }
         }
       } else if (applyChange(workerDb, type, collection, serverDoc)) {
@@ -174,6 +168,19 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
     const workerChanges = Array.from(workerChangesById.values())
     if (workerChanges.length) {
       this.emit('changed', workerChanges)
+    }
+  }
+
+  private compact(collection: TCollection, ids: TDocId[]): void {
+    const serverIds = new Map<TDocId, boolean>()
+    ids.forEach(id => serverIds.set(id, true))
+    const changes: Array<TDelete<TCollection, TDoc>> = this.workerDb
+      .ids(collection)
+      .filter(id => !serverIds.has(id))
+      .map(id => ({ type: 'delete', collection, doc: this.workerDb.clean(this.workerDb.get(collection, id)) }))
+    /* istanbul ignore else */
+    if (changes.length) {
+      this.changed(changes)
     }
   }
 }

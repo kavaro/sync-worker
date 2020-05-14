@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import { Patch, applyPatches, enablePatches } from 'immer'
 import SyncWorker from './SyncWorker'
 import { ServerMemoryDb, WorkerMemoryDb } from './MemoryDb'
-import { TObj } from './types'
+import { TObj, TWorkerDb , TServerDb } from './types'
 
 enablePatches()
 
@@ -199,6 +199,7 @@ test('changed: delete clientChange -> do nothing', t => {
   t.assert(emitSpy.notCalled)
 })
 
+/*
 test('changed: set clientChange and delete serverChange -> delete doc and emit changed', t => {
   const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
   // @ts-ignore
@@ -247,6 +248,7 @@ test('changed: set clientChange and delete serverChange -> do not emit changed u
   ])
   t.assert(emitSpy.notCalled)
 })
+*/
 
 test('changed: set clientChange and set serverChange -> set server doc updated with clientChange patches and emit changed', t => {
   const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
@@ -436,4 +438,21 @@ test('constructor should not add listener when addListener param is false', t =>
   // @ts-ignore
   syncWorker.serverDb.set('c1', { id: 'id1' })
   t.assert(spy.notCalled)
+})
+
+test('compact event: should delete alls doc in worker that are not in the listed ids for the given collection and not changed by client', t => {
+  const syncWorker = createSyncWorker(true)
+  // @ts-ignore
+  const serverDb: TServerDb<string, any, any> = syncWorker.serverDb
+  // @ts-ignore
+  const workerDb: TWorkerDb<string, any, string> = syncWorker.workerDb
+  workerDb.set('c1', { id: 'id1' })
+  workerDb.set('c1', { id: 'id2' })
+  workerDb.set('c1', { id: 'id3' })
+  workerDb.set('c2', { id: 'id4' })
+  syncWorker.clientChanged([{ type: 'upsert', id: 'o1', collection: 'c1', doc: { id: 'id1' }, patches: [] }])
+  t.deepEqual(workerDb.ids('c1'), ['id1', 'id2', 'id3'])
+  // @ts-ignore
+  serverDb.emit('compact', 'c1', ['id3'])
+  t.deepEqual(workerDb.ids('c1'), ['id1', 'id3'])
 })
