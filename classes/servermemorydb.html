@@ -115,6 +115,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="servermemorydb.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="servermemorydb.html#clean" class="tsd-kind-icon">clean</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="servermemorydb.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="servermemorydb.html#emit" class="tsd-kind-icon">emit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="servermemorydb.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
@@ -153,7 +154,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L134">src/lib/MemoryDb.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L138">src/lib/MemoryDb.ts:138</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="servermemorydb.html" class="tsd-signature-type">ServerMemoryDb</a></h4>
@@ -209,6 +210,31 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="clean" class="tsd-anchor"></a>
+					<h3>clean</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">clean<span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tclientdb.html">TClientDb</a>.<a href="../interfaces/tclientdb.html#clean">clean</a></p>
+								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#clean">clean</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L88">src/lib/MemoryDb.ts:88</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>doc: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="delete" class="tsd-anchor"></a>
 					<h3>delete</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
@@ -219,7 +245,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#delete">delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L79">src/lib/MemoryDb.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L79">src/lib/MemoryDb.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +329,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L43">src/lib/MemoryDb.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L43">src/lib/MemoryDb.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -341,7 +367,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#getid">getId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L92">src/lib/MemoryDb.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L96">src/lib/MemoryDb.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -392,7 +418,7 @@
 								<p>Implementation of <a href="../interfaces/tclientdb.html">TClientDb</a>.<a href="../interfaces/tclientdb.html#isequal">isEqual</a></p>
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#isequal">isEqual</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L101">src/lib/MemoryDb.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L105">src/lib/MemoryDb.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -792,7 +818,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/tserverdb.html">TServerDb</a>.<a href="../interfaces/tserverdb.html#save">save</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L144">src/lib/MemoryDb.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L148">src/lib/MemoryDb.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -824,7 +850,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#set">set</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/23018d8/src/lib/MemoryDb.ts#L57">src/lib/MemoryDb.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/db9a7f6/src/lib/MemoryDb.ts#L57">src/lib/MemoryDb.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -911,6 +937,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="servermemorydb.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="servermemorydb.html#clean" class="tsd-kind-icon">clean</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="servermemorydb.html#delete" class="tsd-kind-icon">delete</a>
