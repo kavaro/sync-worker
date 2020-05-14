@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/kavaro/sync-worker/compare/v0.3.0...v0.4.0) (2020-05-14)
+
+
+### Features
+
+* add compact method ([ec2a555](https://github.com/kavaro/sync-worker/commit/ec2a555))
+
+
+### BREAKING CHANGES
+
+* compact method has been added, server delete cannot override client upsert
+
+
+
 ## [0.3.0](https://github.com/kavaro/sync-worker/compare/v0.2.1...v0.3.0) (2020-05-14)
 
 
