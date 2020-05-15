@@ -7,12 +7,12 @@ import { TObj, TWorkerDb , TServerDb } from './types'
 
 enablePatches()
 
-function createSyncWorker(addListener = true): SyncWorker<string, TObj, string, string, Patch> {
+function createSyncWorker(addListener = true): SyncWorker<TObj, Patch> {
   return new SyncWorker(
     new WorkerMemoryDb(),
     new ServerMemoryDb(),
     applyPatches,
-    addListener
+    { addListener }
   )
 }
 
@@ -21,7 +21,7 @@ test.beforeEach(t => {
 })
 
 test('clientChanged delete: should delete doc from db', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   // @ts-ignore
   syncWorker.workerDb.set('c1', { id: 'i1' })
   const spy = sinon.spy()
@@ -43,16 +43,17 @@ test('clientChanged delete: should delete doc from db', t => {
 })
 
 test('clientChanged upsert: when db has doc then upsert db doc and emit changed event if change.doc !== db.doc', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
-  const changedListenerSpy = sinon.spy()
-  syncWorker.addListener('changed', changedListenerSpy)
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   // @ts-ignore
   syncWorker.workerDb.set('c1', { id: 'i1', name: 'Name1', other: 'Other' })
   // @ts-ignore
   syncWorker.workerDb.set('c1', { id: 'i2', name: 'Name1' })
-  const spy = sinon.spy()
   // @ts-ignore
-  syncWorker.workerDb.set = spy
+  const workerSetSpy = sinon.spy(syncWorker.workerDb, 'set')
+  // @ts-ignore
+  syncWorker.workerDb.set = workerSetSpy
+  const changedListenerSpy = sinon.spy()
+  syncWorker.addListener('changed', changedListenerSpy)
   syncWorker.clientChanged([
     {
       id: 'o1',
@@ -76,7 +77,7 @@ test('clientChanged upsert: when db has doc then upsert db doc and emit changed 
       patches: [{ op: 'replace', path: ['name'], value: 'Name3' }]
     }
   ])
-  t.assert(spy.calledWith('c1', { id: 'i1', name: 'Name2', other: 'Other' }))
+  t.assert(workerSetSpy.calledWith('c1', { id: 'i1', name: 'Name2', other: 'Other' }))
   t.deepEqual(changedListenerSpy.getCall(0).args, [
     [{
       id: 'o1',
@@ -86,7 +87,7 @@ test('clientChanged upsert: when db has doc then upsert db doc and emit changed 
     }]
   ])
   // @ts-ignore
-  t.deepEqual(Array.from(syncWorker.clientChanges.values()), [
+  t.deepEqual(syncWorker.clientChanges.values(), [
     {
       id: 'o1',
       type: 'upsert',
@@ -108,7 +109,7 @@ test('clientChanged upsert: when db has doc then upsert db doc and emit changed 
 })
 
 test('clientChanged upsert: when db does not have doc then set db in doc', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const spy = sinon.spy()
   // @ts-ignore
   syncWorker.workerDb.set = spy
@@ -125,7 +126,7 @@ test('clientChanged upsert: when db does not have doc then set db in doc', t => 
 })
 
 test('changed: when there is no clientChange for doc id then apply serverChange to db and emit changed event', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const emitSpy = sinon.spy()
   syncWorker.addListener('changed', emitSpy)
   // @ts-ignore
@@ -171,17 +172,17 @@ test('changed: when there is no clientChange for doc id then apply serverChange 
 })
 
 test('changed: delete clientChange -> do nothing', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const emitSpy = sinon.spy()
   syncWorker.addListener('changed', emitSpy)
-  // @ts-ignore
-  const setSpy = sinon.spy(syncWorker.workerDb, 'set')
-  // @ts-ignore
-  const deleteSpy = sinon.spy(syncWorker.workerDb, 'delete')
   // @ts-ignore
   syncWorker.clientChanges.set('id1', { id: 'o1', type: 'delete', collection: 'c1', doc: { id: 'id1' } })
   // @ts-ignore
   syncWorker.clientChanges.set('id2', { id: 'o2', type: 'delete', collection: 'c1', doc: { id: 'id2' } })
+  // @ts-ignore
+  const setSpy = sinon.spy(syncWorker.workerDb, 'set')
+  // @ts-ignore
+  const deleteSpy = sinon.spy(syncWorker.workerDb, 'delete')
   // @ts-ignore
   syncWorker.changed([
     {
@@ -199,59 +200,8 @@ test('changed: delete clientChange -> do nothing', t => {
   t.assert(emitSpy.notCalled)
 })
 
-/*
-test('changed: set clientChange and delete serverChange -> delete doc and emit changed', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
-  // @ts-ignore
-  syncWorker.workerDb.set('c1', { id: 'id1' })
-  // @ts-ignore
-  syncWorker.clientChanges.set('id1', { id: 'o1', type: 'upsert', collection: 'c1', doc: { id: 'id1' }, patches: [] })
-  const emitSpy = sinon.spy()
-  syncWorker.addListener('changed', emitSpy)
-  // @ts-ignore
-  const setSpy = sinon.spy(syncWorker.workerDb, 'set')
-  // @ts-ignore
-  const deleteSpy = sinon.spy(syncWorker.workerDb, 'delete')
-  // @ts-ignore
-  syncWorker.changed([
-    {
-      type: 'delete',
-      collection: 'c1',
-      doc: { id: 'id1' }
-    }
-  ])
-  t.assert(setSpy.notCalled)
-  t.assert(deleteSpy.calledWith('c1', 'id1'))
-  t.deepEqual(emitSpy.getCall(0).args, [[
-    {
-      id: 'o1',
-      type: 'delete',
-      collection: 'c1',
-      doc: { id: 'id1' }
-    }
-  ]])
-})
-
-test('changed: set clientChange and delete serverChange -> do not emit changed unless doc exists', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
-  // @ts-ignore
-  syncWorker.clientChanges.set('id1', { id: 'o1', type: 'upsert', collection: 'c1', doc: { id: 'id1' }, patches: [] })
-  const emitSpy = sinon.spy()
-  syncWorker.addListener('changed', emitSpy)
-  // @ts-ignore
-  syncWorker.changed([
-    {
-      type: 'delete',
-      collection: 'c1',
-      doc: { id: 'id1' }
-    }
-  ])
-  t.assert(emitSpy.notCalled)
-})
-*/
-
 test('changed: set clientChange and set serverChange -> set server doc updated with clientChange patches and emit changed', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   // @ts-ignore
   syncWorker.workerDb.set('c1', { id: 'id1', name: 'clientName' })
   // @ts-ignore
@@ -293,7 +243,7 @@ test('changed: set clientChange and set serverChange -> set server doc updated w
 })
 
 test('changed: set clientChange and set serverChange -> do not emit unless patched server doc != clientChange doc', t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   // @ts-ignore
   syncWorker.workerDb.set('c1', { id: 'id1', name: 'clientName', other: 'otherName' })
   // @ts-ignore
@@ -328,7 +278,7 @@ test('changed: set clientChange and set serverChange -> do not emit unless patch
 })
 
 test('save: throw when worker db.save throws', async t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   // @ts-ignore
   syncWorker.workerDb.save = () => Promise.reject(new Error('Error saving'))
   try {
@@ -344,7 +294,7 @@ test('save: throw when worker db.save throws', async t => {
 })
 
 test('save: convert clientChanges to dbChanges -> with db doc, clientChange patches -> clears clientChanges', async t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const spy = sinon.spy()
   // @ts-ignore
   syncWorker.serverDb.save = spy
@@ -355,18 +305,18 @@ test('save: convert clientChanges to dbChanges -> with db doc, clientChange patc
   // @ts-ignore
   syncWorker.clientChanges.set('id2', { id: 'o2', type: 'delete', collection: 'c1', doc: { id: 'id2' } })
   // @ts-ignore
-  t.is(syncWorker.clientChanges.size, 2)
+  t.is(syncWorker.clientChanges.values().length, 2)
   await syncWorker.save()
   t.deepEqual(spy.getCall(0).args, [[
     { type: 'upsert', collection: 'c1', doc: { id: 'id1', name: 'NoName', other: 'serverName' }, patches: [{ op: 'add', path: ['name'], value: 'NoName' }] },
     { type: 'delete', collection: 'c1', doc: { id: 'id2' } }
   ]])
   // @ts-ignore
-  t.is(syncWorker.clientChanges.size, 0)
+  t.is(syncWorker.clientChanges.values().length, 0)
 })
 
 test('save: buffers incoming changes while saving and processes buffered changes after saving', async t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const spy = sinon.spy(() => new Promise(resolve => {
     // @ts-ignore
     syncWorker.changed([{ type: 'set', collection: 'c1', doc: { id: 'id1' } }])
@@ -390,7 +340,7 @@ test('save: buffers incoming changes while saving and processes buffered changes
 })
 
 test('save: buffers incoming changes and retains old changes when savingChanges throws', async t => {
-  const syncWorker = t.context as SyncWorker<string, TObj, string, string, Patch>
+  const syncWorker = t.context as SyncWorker<TObj, Patch>
   const spy = sinon.spy(() => new Promise((_, reject) => {
     // @ts-ignore
     syncWorker.changed([{ type: 'set', collection: 'c1', doc: { id: 'id3' } }])

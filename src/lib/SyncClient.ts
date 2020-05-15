@@ -14,9 +14,9 @@ import { applyChange } from './util'
  * pending optimistic change in progress.
  * The client database must be a synchronous database such as lokijs
  */
-export default class SyncClient<TCollection, TDoc, TDocId, TChangeId, TPatch> extends EventEmitter {
-  private clientDb: TClientDb<TCollection, TDoc, TDocId>
-  private optimisticChangeIds: OptimisticChangeIds<TDocId, TChangeId>
+export default class SyncClient<TDoc, TPatch> extends EventEmitter {
+  private clientDb: TClientDb<TDoc>
+  private optimisticChangeIds: OptimisticChangeIds
   private applyingWorkerChanges: boolean
 
   /**
@@ -25,7 +25,7 @@ export default class SyncClient<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * @param changeIdFactory Function that returns optimistic change id
    * @param addListener When true a 'changed' listener on client database will be added that calls the changed method
    */
-  constructor(clientDb: TClientDb<TCollection, TDoc, TDocId>, changeIdFactory: TIdFactory<TChangeId>, addListener: boolean = true) {
+  constructor(clientDb: TClientDb<TDoc>, changeIdFactory: TIdFactory, addListener: boolean = true) {
     super()
     this.clientDb = clientDb
     this.optimisticChangeIds = new OptimisticChangeIds(changeIdFactory)
@@ -40,7 +40,7 @@ export default class SyncClient<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * The worker changes is applied to the client database unless is a pending optimistic change for the same doc
    * @param changes 
    */
-  public workerChanged(changes: Array<TWorkerChange<TCollection, TDoc, TChangeId>>): void {
+  public workerChanged(changes: Array<TWorkerChange<TDoc>>): void {
     const clientDb = this.clientDb
     this.applyingWorkerChanges = true
     changes.forEach(change => {
@@ -58,7 +58,7 @@ export default class SyncClient<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * Assigns a unique id to an optimistic change and forwards the change to the worker
    * @param changes 
    */
-  private changed(changes: Array<TDbChange<TCollection, TDoc, TPatch>>): void {
+  private changed(changes: Array<TDbChange<TDoc, TPatch>>): void {
     if (!this.applyingWorkerChanges) {
       const clientDb = this.clientDb
       const clientChanges = changes.map(change => ({

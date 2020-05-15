@@ -3,10 +3,10 @@ import {
   TDbChangeType
 } from './types'
 
-export function applyDelete<TCollection, TDoc, TId>(
-  db: TDbBase<TCollection, TDoc, TId>,
-  collection: TCollection,
-  id: TId
+export function applyDelete<TDoc>(
+  db: TDbBase<TDoc>,
+  collection: string,
+  id: string
 ): boolean {
   const oldDoc = db.get(collection, id)
   if (oldDoc) {
@@ -16,12 +16,12 @@ export function applyDelete<TCollection, TDoc, TId>(
   return false
 }
 
-export function applySet<TCollection, TDoc, TId>(
-  db: TDbBase<TCollection, TDoc, TId>,
-  collection: TCollection,
+export function applySet<TDoc>(
+  db: TDbBase<TDoc>,
+  collection: string,
   doc: TDoc
 ): boolean {
-  const id: TId = db.getId(doc)
+  const id = db.getId(doc)
   const oldDoc = db.get(collection, id)
   if (!oldDoc || !db.isEqual(doc, oldDoc)) {
     db.set(collection, doc)
@@ -30,10 +30,10 @@ export function applySet<TCollection, TDoc, TId>(
   return false
 }
 
-export function applyChange<TCollection, TDoc, TId>(
-  db: TDbBase<TCollection, TDoc, TId>,
+export function applyChange<TDoc>(
+  db: TDbBase<TDoc>,
   type: TDbChangeType,
-  collection: TCollection,
+  collection: string,
   doc: TDoc
 ): boolean {
   if (type === 'delete') {

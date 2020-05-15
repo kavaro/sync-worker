@@ -3,7 +3,7 @@ import { produceWithPatches, enablePatches, Patch } from 'immer'
 import stringify from 'json-stable-stringify'
 import { v4 as uuid } from 'uuid'
 import { applyChange } from './util'
-import { TClientDb, TWorkerDb, TServerDb, TDbChange, TDbChangeType } from './types'
+import { TDbBase, TClientDb, TWorkerDb, TServerDb, TDbChange, TDbChangeType } from './types'
 
 enablePatches()
 
@@ -15,15 +15,15 @@ function createMapId(collection: string, docId: string): string {
  * In memory synchronous store implementation.
  * Used to test sync-worker module, but can be used as an in-memory store.
  */
-export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string, TDoc, string> {
+export class MemoryDbBase<TDoc> extends EventEmitter implements TDbBase<TDoc> {
+  /**
+   * Maps collectionName/docId to doc
+   */
+  protected docs: Map<string, TDoc>
   /**
    * True when database shall emit events
    */
   private emits: boolean
-  /**
-   * Maps collectionName/docId to doc
-   */
-  private docs: Map<string, TDoc>
 
   /**
    * Create a simple in-memory synchronous database
@@ -33,13 +33,6 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
     super()
     this.emits = emits
     this.docs = new Map()
-  }
-
-  public ids(collection: string): string[] {
-    return Array.from(this.docs.keys())
-      .map(id => id.split('/'))
-      .filter(arr => arr[0] === collection)
-      .map(arr => arr[1])
   }
 
   /**
@@ -63,11 +56,11 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
    */
   public set(collection: string, doc: TDoc): TDoc {
     const oldDoc = this.get(collection, this.getId(doc as TDoc & { id: string }))
-    const [producedDoc, patches] = produceWithPatches(oldDoc || {}, (draft: TDoc & { id: string }) => { 
+    const [producedDoc, patches] = produceWithPatches(oldDoc || {}, (draft: TDoc & { id: string }) => {
       if (!('id' in draft)) {
         draft.id = uuid()
       }
-      Object.assign(draft, doc) 
+      Object.assign(draft, doc)
     })
     const newDoc = producedDoc as TDoc & { id: string }
     this.docs.set(createMapId(collection, newDoc.id), newDoc)
@@ -92,10 +85,6 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
     return oldDoc
   }
 
-  public clean(doc: any): TDoc {
-    return doc
-  }
-
   /**
    * Given a doc, return its id
    * @param doc Document with id field
@@ -117,18 +106,68 @@ export class MemoryDbBase<TDoc> extends EventEmitter implements TClientDb<string
 /**
  * Client synchronous in-memory database implementation
  */
-export class ClientMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TClientDb<string, TDoc, string> {
+export class ClientMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TClientDb<TDoc> {
   constructor() {
     super(true)
+  }
+
+  /**
+   * Remove all database related fields from doc
+   * @param doc 
+   */
+  public clean(doc: any): TDoc {
+    return doc
   }
 }
 
 /**
  * Worker synchronous in-memory database implementation
  */
-export class WorkerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TWorkerDb<string, TDoc, string> {
+export class WorkerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TWorkerDb<TDoc> {
   constructor() {
     super(false)
+  }
+
+  public setId(doc: TDoc, id: string): TDoc {
+    (doc as any).id = id
+    return doc
+  }
+
+  /**
+   * Remove all database related fields from doc
+   * @param doc 
+   */
+  public clean(doc: TDoc): TDoc {
+    return doc
+  }
+
+
+  /**
+   * Returns array with all ids in collection
+   * @param collection 
+   */
+  public ids(collection: string): string[] {
+    return Array.from(this.docs.keys())
+      .map(id => id.split('/'))
+      .filter(arr => arr[0] === collection)
+      .map(arr => arr[1])
+  }
+
+  /**
+   * Returns array with all docs in collection
+   * @param collection 
+   * @param collection 
+   */
+  public values(collection: string): TDoc[] {
+    return this.ids(collection).map(id => this.get(collection, id))
+  }
+
+  /**
+   * Remove all docs from collection and save collection
+   * @param collection
+   */
+  public async clear(collection: string): Promise<void> {
+    this.ids(collection).forEach(id => this.delete(collection, id))
   }
 
   /**
@@ -142,7 +181,7 @@ export class WorkerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TWorkerD
 /**
  * Server synchronous in-memory database implementation
  */
-export class ServerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TServerDb<string, TDoc, Patch> {
+export class ServerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TServerDb<TDoc, Patch> {
   constructor() {
     super(true)
   }
@@ -152,7 +191,7 @@ export class ServerMemoryDb<TDoc> extends MemoryDbBase<TDoc> implements TServerD
    * Returns promise that resolves when save was successfull and rejects otherwise
    * @param changes 
    */
-  public async save(changes: Array<TDbChange<string, TDoc, Patch>>) : Promise<void> {
+  public async save(changes: Array<TDbChange<TDoc, Patch>>): Promise<void> {
     changes.forEach(change => applyChange(this, change.type as TDbChangeType, change.collection, change.doc))
   }
 }

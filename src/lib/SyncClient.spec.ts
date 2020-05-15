@@ -5,7 +5,7 @@ import SyncClient from './SyncClient'
 import { ClientMemoryDb } from './MemoryDb'
 import { TObj } from './types'
 
-function createSyncClient(...ids: string[]): SyncClient<string, TObj, string, string, Patch> {
+function createSyncClient(...ids: string[]): SyncClient<TObj, Patch> {
   const db = new ClientMemoryDb()
   const idFactory = () => ids.shift()
   return new SyncClient(db, idFactory, false)
@@ -16,7 +16,7 @@ test.beforeEach(t => {
 })
 
 test('changed should generate change id and emit changed event', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   const changedListener = sinon.spy()
   client.addListener('changed', changedListener)
   // @ts-ignore
@@ -36,7 +36,7 @@ test('changed should generate change id and emit changed event', t => {
 })
 
 test('workerChanged should call set when doc does not exist', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   const spy = client.clientDb.set = sinon.spy()
   client.workerChanged([{ type: 'set', collection: 'c1', doc: { id: 'i1' } }])
@@ -44,7 +44,7 @@ test('workerChanged should call set when doc does not exist', t => {
 })
 
 test('workerChanged should call set when docs are not equal', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   client.clientDb.set('c1', { id: 'i1' })
   // @ts-ignore
@@ -54,7 +54,7 @@ test('workerChanged should call set when docs are not equal', t => {
 })
 
 test('workerChanged should not call set when docs are equal', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   client.clientDb.set('c1', { id: 'i1' })
   // @ts-ignore
@@ -64,7 +64,7 @@ test('workerChanged should not call set when docs are equal', t => {
 })
 
 test('workerChanged should call delete when doc exists', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   client.clientDb.set('c1', { id: 'i1' })
   // @ts-ignore
@@ -74,7 +74,7 @@ test('workerChanged should call delete when doc exists', t => {
 })
 
 test('workerChanged should not call delete when doc does not exists', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   const spy = client.clientDb.delete = sinon.spy()
   client.workerChanged([{ type: 'delete', collection: 'c1', doc: { id: 'i1' } }])
@@ -82,7 +82,7 @@ test('workerChanged should not call delete when doc does not exists', t => {
 })
 
 test('workerChanged should clear optimistic change when change id matches', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   // @ts-ignore
   client.changed([{
     type: 'delete',
@@ -110,7 +110,7 @@ test('workerChanged should clear optimistic change when change id matches', t =>
 })
 
 test('should not emit changed events while applying worker changes', t => {
-  const client = t.context as SyncClient<string, TObj, string, string, Patch>
+  const client = t.context as SyncClient<TObj, Patch>
   const changedCalledSpy = sinon.spy()
   // @ts-ignore
   const oldSet = client.clientDb.set

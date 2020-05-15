@@ -2,7 +2,7 @@ export interface TObj {
   [key: string]: any
 }
 
-export type TIdFactory<TId> = () => TId
+export type TIdFactory = () => string
 
 export type UPSERT = 'upsert'
 export type SET = 'set'
@@ -10,65 +10,65 @@ export type DELETE = 'delete'
 
 export type TApplyPatches<TDoc, TPatch> = (doc: TDoc, patches: TPatch[]) => TDoc
 
-export interface TCollectionDoc<TCollection, TDoc> {
-  collection: TCollection
+export interface TCollectionDoc<TDoc> {
+  collection: string
   doc: TDoc
 }
 
-export interface TDelete<TCollection, TDoc> extends TCollectionDoc<TCollection, TDoc> {
+export interface TDelete<TDoc> extends TCollectionDoc<TDoc> {
   type: DELETE
 }
 
-export interface TOptimisticDelete<TCollection, TDoc, TChangeId> extends TDelete<TCollection, TDoc> {
-  id: TChangeId
+export interface TOptimisticDelete<TDoc> extends TDelete<TDoc> {
+  id: string
 }
 
-export interface TWorkerDelete<TCollection, TDoc, TChangeId> extends TDelete<TCollection, TDoc> {
-  id?: TChangeId
+export interface TWorkerDelete<TDoc> extends TDelete<TDoc> {
+  id?: string
 }
 
-export interface TUpsert<TCollection, TDoc, TPatch> extends TCollectionDoc<TCollection, TDoc> {
+export interface TUpsert<TDoc, TPatch> extends TCollectionDoc<TDoc> {
   type: UPSERT
   patches: TPatch[]
 }
 
-export interface TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch> extends TUpsert<TCollection, TDoc, TPatch> {
-  id: TChangeId
+export interface TOptimisticUpsert<TDoc, TPatch> extends TUpsert<TDoc, TPatch> {
+  id: string
 }
 
-export interface TSet<TCollection, TDoc> extends TCollectionDoc<TCollection, TDoc> {
+export interface TSet<TDoc> extends TCollectionDoc<TDoc> {
   type: SET
 }
 
-export interface TWorkerSet<TCollection, TDoc, TChangeId> extends TSet<TCollection, TDoc> {
-  id?: TChangeId
+export interface TWorkerSet<TDoc> extends TSet<TDoc> {
+  id?: string
 }
 
-export type TDbChange<TCollection, TDoc, TPatch> =
-  TUpsert<TCollection, TDoc, TPatch> |
-  TDelete<TCollection, TDoc>
+export type TDbChange<TDoc, TPatch> =
+  TUpsert<TDoc, TPatch> |
+  TDelete<TDoc>
 
-export type TOptimisticChange<TCollection, TDoc, TChangeId, TPatch> =
-  TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch> |
-  TOptimisticDelete<TCollection, TDoc, TChangeId>
+export type TOptimisticChange<TDoc, TPatch> =
+  TOptimisticUpsert<TDoc, TPatch> |
+  TOptimisticDelete<TDoc>
 
-export type TWorkerChange<TCollection, TDoc, TChangeId> =
-  TWorkerSet<TCollection, TDoc, TChangeId> |
-  TWorkerDelete<TCollection, TDoc, TChangeId>
+export type TWorkerChange<TDoc> =
+  TWorkerSet<TDoc> |
+  TWorkerDelete<TDoc>
 
-export type TServerChange<TCollection, TDoc> =
-  TSet<TCollection, TDoc> |
-  TDelete<TCollection, TDoc>
+export type TServerChange<TDoc> =
+  TSet<TDoc> |
+  TDelete<TDoc>
 
 export type TDbChangeType = SET | DELETE
 
-export interface TDbBase<TCollection, TDoc, TId> {
+export interface TDbBase<TDoc> {
   /**
    * Given collection name and document id return document
    * @param collection Collection name
    * @param id Document id
    */
-  get(collection: TCollection, id: TId): TDoc | void
+  get(collection: string, id: string): TDoc | void
   /**
    * Given collection name set document by its id
    * If document does not have id, then a id should be generated and assign to the id property
@@ -76,20 +76,20 @@ export interface TDbBase<TCollection, TDoc, TId> {
    * @param doc Document
    * @returns Document or undefined 
    */
-  set(collection: TCollection, doc: TDoc): void
+  set(collection: string, doc: TDoc): void
   /**
    * Delete document by collection name  document
    * @param collection Collection name
    * @param id Document id
    * @returns Deleted document
    */
-  delete(collection: TCollection, id: TId): void
+  delete(collection: string, id: string): void
   /**
    * Give document return its id
    * @param doc 
    * @returns document id
    */
-  getId(doc: TDoc): TId
+  getId(doc: TDoc): string
   /**
    * Returns true when 2 document are the same
    * @param docA 
@@ -102,17 +102,34 @@ export interface TDbBase<TCollection, TDoc, TId> {
 /**
  * Worker database interface
  */
-export interface TWorkerDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
+export interface TWorkerDb<TDoc> extends TDbBase<TDoc> {
+  /**
+   * Set id on document
+   * @param doc 
+   * @param id
+   * @returns document
+   */
+  setId(doc: TDoc, id: string): TDoc
   /**
    * Remove all database artifacts from doc
    * @param doc 
    */
   clean(doc: any): TDoc
   /**
-   * Get all list of all ids in collection
+   * Clear all docs from collection
+   * @param collection
+   */
+  clear(collection: string): Promise<void> 
+  /**
+   * Get a list of all ids in collection
    * @returns array with all ids in the collection
    */
-  ids(collection: TCollection): TId[] 
+  ids(collection: string): string[]
+  /**
+   * Get a list of all docs in collection
+   * @param collection
+   */ 
+  values(collection: string): TDoc[]
   /**
    * Persist database and return a promise that resolves on success and rejects on failure
    */
@@ -124,7 +141,7 @@ export type Listener = (...args: any[]) => void
 /**
  * Client database interface
  */
-export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, TDoc, TId> {
+export interface TClientDb<TDoc> extends TDbBase<TDoc> {
   /**
    * Remove all database artifacts from doc
    * @param doc 
@@ -141,7 +158,7 @@ export interface TClientDb<TCollection, TDoc, TId> extends TDbBase<TCollection, 
 /**
  * Server database interface
  */
-export interface TServerDb<TCollection, TDoc, TPatch> {
+export interface TServerDb<TDoc, TPatch> {
   /**
    * Add event listener
    * @param event
@@ -152,5 +169,5 @@ export interface TServerDb<TCollection, TDoc, TPatch> {
    * Save changes to server database
    * @param changes 
    */
-  save(changes: Array<TDbChange<TCollection, TDoc, TPatch>>) : Promise<void>
+  save(changes: Array<TDbChange<TDoc, TPatch>>) : Promise<void>
 }

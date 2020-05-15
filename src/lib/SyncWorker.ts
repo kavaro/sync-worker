@@ -8,9 +8,44 @@ import {
   TServerDb,
   TWorkerChange,
   TDelete,
-  TWorkerDb
+  TWorkerDb,
 } from './types'
 import { applyChange, applyDelete, applySet } from './util'
+
+export class ClientChanges<TDoc, TPatch> {
+  public readonly workerDb: TWorkerDb<any>
+  public readonly collection: string
+
+  constructor(workerDb: TWorkerDb<any>, collection: string) {
+    this.workerDb = workerDb
+    this.collection = collection
+  }
+
+  public set(id: string, change: TOptimisticChange<TDoc, TPatch>): void {
+    const doc = this.workerDb.setId({ change }, id)
+    this.workerDb.set(this.collection, doc)
+  }
+
+  public get(id: string): TOptimisticChange<TDoc, TPatch> | void {
+    const doc = this.workerDb.get(this.collection, id)
+    if (doc) {
+      return doc.change
+    }
+  }
+
+  public values(): Array<TOptimisticChange<TDoc, TPatch>> {
+    return this.workerDb.values(this.collection).map(doc => doc.change)
+  }
+
+  public async clear(): Promise<void> {
+    await this.workerDb.clear(this.collection)
+  }
+}
+
+export interface TWorkerSyncOptions {
+  addListener?: boolean
+  changesCollection?: string
+}
 
 /**
  * Responsible for conflict resolution between changes to the client database and the server database
@@ -21,13 +56,14 @@ import { applyChange, applyDelete, applySet } from './util'
  * The worker database must be a synchronous database such as lokijs
  * The server database can be synchronous or asynchronous such as lokijs, firestore or hasura
  */
-export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> extends EventEmitter {
-  private workerDb: TWorkerDb<TCollection, TDoc, TDocId>
-  private serverDb: TServerDb<TCollection, TDoc, TPatch>
+export default class SyncWorker<TDoc, TPatch> extends EventEmitter {
+  private workerDb: TWorkerDb<TDoc>
+  private serverDb: TServerDb<TDoc, TPatch>
   private applyPatches: TApplyPatches<TDoc, TPatch>
-  private clientChanges: Map<TDocId, TOptimisticChange<TCollection, TDoc, TChangeId, TPatch>>
-  private pendingClientChanges: Array<TOptimisticChange<TCollection, TDoc, TChangeId, TPatch>> | null
-  private pendingServerChanges: Array<TWorkerChange<TCollection, TDoc, TChangeId>> | null
+  private options: TWorkerSyncOptions
+  private clientChanges: ClientChanges<any, TPatch>
+  private pendingClientChanges: Array<TOptimisticChange<TDoc, TPatch>> | null
+  private pendingServerChanges: Array<TWorkerChange<TDoc>> | null
 
   /**
    * 
@@ -38,19 +74,24 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * @param addListener When true the 'changed' event on the server database will call the changed method
    */
   constructor(
-    workerDb: TWorkerDb<TCollection, TDoc, TDocId>,
-    serverDb: TServerDb<TCollection, TDoc, TPatch>,
+    workerDb: TWorkerDb<TDoc>,
+    serverDb: TServerDb<TDoc, TPatch>,
     applyPatches: TApplyPatches<TDoc, TPatch>,
-    addListener: boolean = true
+    options?: TWorkerSyncOptions 
   ) {
     super()
     this.workerDb = workerDb
     this.serverDb = serverDb
     this.applyPatches = applyPatches
-    this.clientChanges = new Map()
+    this.options = { 
+      addListener: true,
+      changesCollection: '_changes',
+      ...options 
+    }
+    this.clientChanges = new ClientChanges(workerDb, this.options.changesCollection)
     this.pendingClientChanges = null
     this.pendingServerChanges = null
-    if (addListener) {
+    if (this.options.addListener) {
       serverDb.addListener('changed', changes => this.changed(changes))
       serverDb.addListener('compact', (collection, ids) => this.compact(collection, ids))
     }
@@ -62,12 +103,12 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * server database. Emits 'changed' event to notify that the client database and the worker database are out of sync.
    * @param optimisticChanges 
    */
-  public clientChanged(optimisticChanges: Array<TOptimisticChange<TCollection, TDoc, TChangeId, TPatch>>): void {
+  public clientChanged(optimisticChanges: Array<TOptimisticChange<TDoc, TPatch>>): void {
     if (this.pendingClientChanges) {
       this.pendingClientChanges.push(...optimisticChanges)
       return
     }
-    const workerChangesById = new Map<TDocId, TWorkerChange<TCollection, TDoc, TChangeId>>()
+    const workerChangesById = new Map<string, TWorkerChange<TDoc>>()
     optimisticChanges.forEach(optimisticChange => {
       const { id, type, collection, doc: clientDoc } = optimisticChange
       const workerDb = this.workerDb
@@ -76,7 +117,7 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
         applyDelete(workerDb, collection, docId)
         this.clientChanges.set(docId, { ...optimisticChange })
       } else {
-        optimisticChange = optimisticChange as TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch>
+        optimisticChange = optimisticChange as TOptimisticUpsert<TDoc, TPatch>
         const oldDoc = workerDb.get(collection, docId)
         if (oldDoc) {
           const newDoc = this.applyPatches(oldDoc, optimisticChange.patches)
@@ -117,16 +158,16 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
       const serverChanges = Array.from(this.clientChanges.values()).map(change => {
         const { collection, doc } = change
         if (change.type === 'delete') {
-          const { type } = change as TOptimisticDelete<TCollection, TDoc, TChangeId>
+          const { type } = change as TOptimisticDelete<TDoc>
           return { type, collection, doc }
         } else {
-          const { type, patches } = change as TOptimisticUpsert<TCollection, TDoc, TChangeId, TPatch>
+          const { type, patches } = change as TOptimisticUpsert<TDoc, TPatch>
           const workerDoc = workerDb.get(change.collection, workerDb.getId(change.doc)) as TDoc
           return { type, collection, doc: workerDb.clean(workerDoc), patches }
         }
       })
       await this.serverDb.save(serverChanges)
-      this.clientChanges = new Map()
+      await this.clientChanges.clear()
     } catch (err) {
       throw err
     } finally {
@@ -142,12 +183,12 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
    * Emits 'changed' event to notify that the client database and the worker database are out of sync.
    * @param serverChanges
    */
-  private changed(serverChanges: Array<TServerChange<TCollection, TDoc>>): void {
+  private changed(serverChanges: Array<TServerChange<TDoc>>): void {
     if (this.pendingServerChanges) {
       this.pendingServerChanges.push(...serverChanges)
       return
     }
-    const workerChangesById = new Map<TDocId, TWorkerChange<TCollection, TDoc, TChangeId>>()
+    const workerChangesById = new Map<string, TWorkerChange<TDoc>>()
     serverChanges.forEach(serverChange => {
       const { type, collection, doc: serverDoc } = serverChange
       const workerDb = this.workerDb
@@ -171,10 +212,10 @@ export default class SyncWorker<TCollection, TDoc, TDocId, TChangeId, TPatch> ex
     }
   }
 
-  private compact(collection: TCollection, ids: TDocId[]): void {
-    const serverIds = new Map<TDocId, boolean>()
+  private compact(collection: string, ids: string[]): void {
+    const serverIds = new Map<string, boolean>()
     ids.forEach(id => serverIds.set(id, true))
-    const changes: Array<TDelete<TCollection, TDoc>> = this.workerDb
+    const changes: Array<TDelete<TDoc>> = this.workerDb
       .ids(collection)
       .filter(id => !serverIds.has(id))
       .map(id => ({ type: 'delete', collection, doc: this.workerDb.clean(this.workerDb.get(collection, id)) }))

@@ -61,11 +61,11 @@ class MockWorkerChannel {
 test.beforeEach(t => {
   // client
   const clientDb = new ClientMemoryDb()
-  const syncClient = new SyncClient<string, TObj, string, string, Patch>(clientDb, uuid)
+  const syncClient = new SyncClient<TObj, Patch>(clientDb, uuid)
   // worker and server 
   const workerDb = new WorkerMemoryDb()
   const serverDb = new ServerMemoryDb()
-  const syncWorker = new SyncWorker<string, TObj, string, string, Patch>(workerDb, serverDb, applyPatches)
+  const syncWorker = new SyncWorker<TObj, Patch>(workerDb, serverDb, applyPatches)
   // bind async communication channels
   const client2worker = new MockWorkerChannel('client2worker', message => syncWorker[message.type](message.payload))
   const worker2client = new MockWorkerChannel('worker2client', message => syncClient[message.type](message.payload))

@@ -7,14 +7,14 @@ function createIdFactory(...ids: string[]): () => string {
 }
 
 test('add should return changeId', t => {
-  const idFactory: TIdFactory<string> = createIdFactory('ca', 'cb', 'cc', 'cd')
-  const changeIds = new OptimisticChangeIds<string, string>(idFactory)
+  const idFactory: TIdFactory = createIdFactory('ca', 'cb', 'cc', 'cd')
+  const changeIds = new OptimisticChangeIds(idFactory)
   t.is(changeIds.add('a'), 'ca')
 })
 
 test('add should map docId to changeId', t => {
-  const idFactory: TIdFactory<string> = createIdFactory('ca', 'cb', 'cc', 'cd')
-  const changeIds = new OptimisticChangeIds<string, string>(idFactory)
+  const idFactory: TIdFactory = createIdFactory('ca', 'cb', 'cc', 'cd')
+  const changeIds = new OptimisticChangeIds(idFactory)
   const ca = changeIds.add('a')
   const cb = changeIds.add('b')
   // @ts-ignore
@@ -26,15 +26,15 @@ test('add should map docId to changeId', t => {
 })
 
 test('remote should return true when there is no optimistic change', t => {
-  const idFactory: TIdFactory<string> = createIdFactory('ca', 'cb', 'cc', 'cd')
-  const changeIds = new OptimisticChangeIds<string, string>(idFactory)
+  const idFactory: TIdFactory = createIdFactory('ca', 'cb', 'cc', 'cd')
+  const changeIds = new OptimisticChangeIds(idFactory)
   changeIds.add('a')
   t.is(changeIds.remove('b'), true)
 })
 
 test('remote should return true when the optimistic change has the same changeId', t => {
-  const idFactory: TIdFactory<string> = createIdFactory('ca', 'cb', 'cc', 'cd')
-  const changeIds = new OptimisticChangeIds<string, string>(idFactory)
+  const idFactory: TIdFactory = createIdFactory('ca', 'cb', 'cc', 'cd')
+  const changeIds = new OptimisticChangeIds(idFactory)
   changeIds.add('a')
   t.is(changeIds.remove('a', 'ca'), true)
   changeIds.add('a')
