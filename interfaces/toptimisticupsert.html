@@ -59,7 +59,7 @@
 					<a href="toptimisticupsert.html">TOptimisticUpsert</a>
 				</li>
 			</ul>
-			<h1>Interface TOptimisticUpsert&lt;TCollection, TDoc, TChangeId, TPatch&gt;</h1>
+			<h1>Interface TOptimisticUpsert&lt;TDoc, TPatch&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -70,13 +70,7 @@
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>TCollection</h4>
-					</li>
-					<li>
 						<h4>TDoc</h4>
-					</li>
-					<li>
-						<h4>TChangeId</h4>
 					</li>
 					<li>
 						<h4>TPatch</h4>
@@ -87,7 +81,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="tupsert.html" class="tsd-signature-type">TUpsert</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCollection</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">&gt;</span>
+						<a href="tupsert.html" class="tsd-signature-type">TUpsert</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">TOptimisticUpsert</span>
@@ -118,11 +112,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="collection" class="tsd-anchor"></a>
 					<h3>collection</h3>
-					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TCollection</span></div>
+					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tcollectiondoc.html">TCollectionDoc</a>.<a href="tcollectiondoc.html#collection">collection</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L14">src/lib/types.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L14">src/lib/types.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,17 +127,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tcollectiondoc.html">TCollectionDoc</a>.<a href="tcollectiondoc.html#doc">doc</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L15">src/lib/types.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L15">src/lib/types.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TChangeId</span></div>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L36">src/lib/types.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L36">src/lib/types.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,7 +148,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tupsert.html">TUpsert</a>.<a href="tupsert.html#patches">patches</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L32">src/lib/types.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L32">src/lib/types.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,7 +159,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tupsert.html">TUpsert</a>.<a href="tupsert.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/types.ts#L31">src/lib/types.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L31">src/lib/types.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,12 +176,15 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/clientchanges.html" class="tsd-kind-icon">Client<wbr>Changes</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/clientmemorydb.html" class="tsd-kind-icon">Client<wbr>Memory<wbr>Db</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/memorydbbase.html" class="tsd-kind-icon">Memory<wbr>DbBase</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class">
 						<a href="../classes/optimisticchangeids.html" class="tsd-kind-icon">Optimistic<wbr>Change<wbr>Ids</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
@@ -262,6 +259,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="tworkerset.html" class="tsd-kind-icon">TWorker<wbr>Set</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="tworkersyncoptions.html" class="tsd-kind-icon">TWorker<wbr>Sync<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#delete" class="tsd-kind-icon">DELETE</a>
 					</li>
@@ -280,7 +280,7 @@
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#tdbchangetype" class="tsd-kind-icon">TDb<wbr>Change<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#tidfactory" class="tsd-kind-icon">TId<wbr>Factory</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
@@ -326,12 +326,13 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
@@ -339,6 +340,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
 			</ul>
 		</div>
 	</div>

@@ -97,8 +97,8 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/tclientdb.html" class="tsd-signature-type">TClientDb</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
-					<li><a href="../interfaces/tworkerdb.html" class="tsd-signature-type">TWorkerDb</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/tdbbase.html" class="tsd-signature-type">TDbBase</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/tworkerdb.html" class="tsd-signature-type">TWorkerDb</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -111,18 +111,25 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="workermemorydb.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="workermemorydb.html#docs" class="tsd-kind-icon">docs</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#clean" class="tsd-kind-icon">clean</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#clean" class="tsd-kind-icon">clean</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#clear" class="tsd-kind-icon">clear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#emit" class="tsd-kind-icon">emit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#getid" class="tsd-kind-icon">get<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#ids" class="tsd-kind-icon">ids</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#ids" class="tsd-kind-icon">ids</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#isequal" class="tsd-kind-icon">is<wbr>Equal</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#listenercount" class="tsd-kind-icon">listener<wbr>Count</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#listeners" class="tsd-kind-icon">listeners</a></li>
@@ -136,7 +143,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#save" class="tsd-kind-icon">save</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#setid" class="tsd-kind-icon">set<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="workermemorydb.html#setmaxlisteners" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="workermemorydb.html#values" class="tsd-kind-icon">values</a></li>
 							</ul>
 						</section>
 					</div>
@@ -155,12 +164,31 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L129">src/lib/MemoryDb.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L126">src/lib/MemoryDb.ts:126</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="workermemorydb.html" class="tsd-signature-type">WorkerMemoryDb</a></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="docs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> docs</h3>
+					<div class="tsd-signature tsd-kind-icon">docs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#docs">docs</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L22">src/lib/MemoryDb.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Maps collectionName/docId to doc</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -210,28 +238,64 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="clean" class="tsd-anchor"></a>
 					<h3>clean</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">clean<span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clean<span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#clean">clean</a></p>
-								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#clean">clean</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L95">src/lib/MemoryDb.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L140">src/lib/MemoryDb.ts:140</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove all database related fields from doc</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>doc: <span class="tsd-signature-type">any</span></h5>
+									<h5>doc: <span class="tsd-signature-type">TDoc</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clear" class="tsd-anchor"></a>
+					<h3>clear</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span>collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#clear">clear</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L169">src/lib/MemoryDb.ts:169</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove all docs from collection and save collection</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>collection: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -244,9 +308,10 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#delete">delete</a></p>
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#delete">delete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L86">src/lib/MemoryDb.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L79">src/lib/MemoryDb.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -328,9 +393,10 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#get">get</a></p>
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L50">src/lib/MemoryDb.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L43">src/lib/MemoryDb.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -368,7 +434,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#getid">getId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L103">src/lib/MemoryDb.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L92">src/lib/MemoryDb.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -407,24 +473,31 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="ids" class="tsd-anchor"></a>
 					<h3>ids</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">ids<span class="tsd-signature-symbol">(</span>collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#ids">ids</a></p>
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#ids">ids</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L38">src/lib/MemoryDb.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L149">src/lib/MemoryDb.ts:149</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns array with all ids in collection</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>collection: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -443,7 +516,7 @@
 								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#isequal">isEqual</a></p>
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#isequal">isEqual</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L112">src/lib/MemoryDb.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L101">src/lib/MemoryDb.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -843,7 +916,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#save">save</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L138">src/lib/MemoryDb.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L177">src/lib/MemoryDb.ts:177</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -865,9 +938,10 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#set">set</a></p>
 								<p>Inherited from <a href="memorydbbase.html">MemoryDbBase</a>.<a href="memorydbbase.html#set">set</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/ec2a555/src/lib/MemoryDb.ts#L64">src/lib/MemoryDb.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L57">src/lib/MemoryDb.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -899,6 +973,33 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setid" class="tsd-anchor"></a>
+					<h3>set<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Id<span class="tsd-signature-symbol">(</span>doc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#setid">setId</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L131">src/lib/MemoryDb.ts:131</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>doc: <span class="tsd-signature-type">TDoc</span></h5>
+								</li>
+								<li>
+									<h5>id: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="setmaxlisteners" class="tsd-anchor"></a>
 					<h3>set<wbr>Max<wbr>Listeners</h3>
@@ -923,6 +1024,39 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="values" class="tsd-anchor"></a>
+					<h3>values</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">(</span>collection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tworkerdb.html">TWorkerDb</a>.<a href="../interfaces/tworkerdb.html#values">values</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/MemoryDb.ts#L161">src/lib/MemoryDb.ts:161</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns array with all docs in collection</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>collection: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -936,12 +1070,15 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="clientchanges.html" class="tsd-kind-icon">Client<wbr>Changes</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="clientmemorydb.html" class="tsd-kind-icon">Client<wbr>Memory<wbr>Db</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="memorydbbase.html" class="tsd-kind-icon">Memory<wbr>DbBase</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class">
 						<a href="optimisticchangeids.html" class="tsd-kind-icon">Optimistic<wbr>Change<wbr>Ids</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
@@ -961,11 +1098,17 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="workermemorydb.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="workermemorydb.html#docs" class="tsd-kind-icon">docs</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="workermemorydb.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="workermemorydb.html#clean" class="tsd-kind-icon">clean</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="workermemorydb.html#clear" class="tsd-kind-icon">clear</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="workermemorydb.html#delete" class="tsd-kind-icon">delete</a>
@@ -985,7 +1128,7 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="workermemorydb.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="workermemorydb.html#ids" class="tsd-kind-icon">ids</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
@@ -1027,8 +1170,14 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="workermemorydb.html#set" class="tsd-kind-icon">set</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="workermemorydb.html#setid" class="tsd-kind-icon">set<wbr>Id</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="workermemorydb.html#setmaxlisteners" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="workermemorydb.html#values" class="tsd-kind-icon">values</a>
 							</li>
 						</ul>
 					</li>
@@ -1073,6 +1222,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="../interfaces/tworkerset.html" class="tsd-kind-icon">TWorker<wbr>Set</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/tworkersyncoptions.html" class="tsd-kind-icon">TWorker<wbr>Sync<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#delete" class="tsd-kind-icon">DELETE</a>
 					</li>
@@ -1091,7 +1243,7 @@
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#tdbchangetype" class="tsd-kind-icon">TDb<wbr>Change<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#tidfactory" class="tsd-kind-icon">TId<wbr>Factory</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
@@ -1137,12 +1289,13 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
@@ -1150,6 +1303,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
 			</ul>
 		</div>
 	</div>

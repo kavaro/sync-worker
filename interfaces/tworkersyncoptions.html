@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TUpsert | sync-worker</title>
+	<title>TWorkerSyncOptions | sync-worker</title>
 	<meta name="description" content="Documentation for sync-worker">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,42 +56,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="tupsert.html">TUpsert</a>
+					<a href="tworkersyncoptions.html">TWorkerSyncOptions</a>
 				</li>
 			</ul>
-			<h1>Interface TUpsert&lt;TDoc, TPatch&gt;</h1>
+			<h1>Interface TWorkerSyncOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>TDoc</h4>
-					</li>
-					<li>
-						<h4>TPatch</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="tcollectiondoc.html" class="tsd-signature-type">TCollectionDoc</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDoc</span><span class="tsd-signature-symbol">&gt;</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">TUpsert</span>
-								<ul class="tsd-hierarchy">
-									<li>
-										<a href="toptimisticupsert.html" class="tsd-signature-type">TOptimisticUpsert</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<span class="target">TWorkerSyncOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -102,10 +81,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="tupsert.html#collection" class="tsd-kind-icon">collection</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="tupsert.html#doc" class="tsd-kind-icon">doc</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tupsert.html#patches" class="tsd-kind-icon">patches</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tupsert.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tworkersyncoptions.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tworkersyncoptions.html#changescollection" class="tsd-kind-icon">changes<wbr>Collection</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,45 +90,23 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="collection" class="tsd-anchor"></a>
-					<h3>collection</h3>
-					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="addlistener" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> add<wbr>Listener</h3>
+					<div class="tsd-signature tsd-kind-icon">add<wbr>Listener<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="tcollectiondoc.html">TCollectionDoc</a>.<a href="tcollectiondoc.html#collection">collection</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L14">src/lib/types.ts:14</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="doc" class="tsd-anchor"></a>
-					<h3>doc</h3>
-					<div class="tsd-signature tsd-kind-icon">doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TDoc</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="tcollectiondoc.html">TCollectionDoc</a>.<a href="tcollectiondoc.html#doc">doc</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L15">src/lib/types.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/SyncWorker.ts#L46">src/lib/SyncWorker.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="patches" class="tsd-anchor"></a>
-					<h3>patches</h3>
-					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TPatch</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="changescollection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> changes<wbr>Collection</h3>
+					<div class="tsd-signature tsd-kind-icon">changes<wbr>Collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L32">src/lib/types.ts:32</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../globals.html#upsert" class="tsd-signature-type">UPSERT</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/types.ts#L31">src/lib/types.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/kavaro/sync-worker/blob/e41fca9/src/lib/SyncWorker.ts#L47">src/lib/SyncWorker.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -218,27 +173,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="tset.html" class="tsd-kind-icon">TSet</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-has-type-parameter">
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="tupsert.html" class="tsd-kind-icon">TUpsert</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="tupsert.html#collection" class="tsd-kind-icon">collection</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="tupsert.html#doc" class="tsd-kind-icon">doc</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="tupsert.html#patches" class="tsd-kind-icon">patches</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="tupsert.html#type" class="tsd-kind-icon">type</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="tworkerdb.html" class="tsd-kind-icon">TWorker<wbr>Db</a>
 					</li>
@@ -248,9 +185,21 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="tworkerset.html" class="tsd-kind-icon">TWorker<wbr>Set</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="tworkersyncoptions.html" class="tsd-kind-icon">TWorker<wbr>Sync<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="tworkersyncoptions.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="tworkersyncoptions.html#changescollection" class="tsd-kind-icon">changes<wbr>Collection</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#delete" class="tsd-kind-icon">DELETE</a>
 					</li>
