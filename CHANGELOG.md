@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/kavaro/sync-worker/compare/v0.4.0...v0.5.0) (2020-05-15)
+
+
+### improvement
+
+* simplify type declarations, options object, setId, clear for SyncWorker ([e41fca9](https://github.com/kavaro/sync-worker/commit/e41fca9))
+
+
+### BREAKING CHANGES
+
+* Nearly all type declarations have changes, Syncworker options object, workerDb
+setId and async clear methods
+
+
+
 ## [0.4.0](https://github.com/kavaro/sync-worker/compare/v0.3.0...v0.4.0) (2020-05-14)
 
 
